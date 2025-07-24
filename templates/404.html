@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features Coming Soon!</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font for a slightly more friendly look (optional) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset & Body Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif; /* Using Poppins for a modern feel */
+            background-color: white;
+            display: flex; /* Use flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            min-height: 100vh; /* Full viewport height */
+            overflow: hidden; /* Hide any overflow from animations */
+            box-sizing: border-box;
+        }
+
+        /* Container for the message */
+        .message-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 90%; /* Responsive width */
+            animation: fadeInScale 0.8s ease-out forwards; /* Entrance animation */
+            border: 1px solid #eee; /* Subtle border */
+        }
+
+        /* Icon Styling */
+        .message-icon {
+            font-size: 4em; /* Large icon */
+            color: #FFA500; /* Orange color */
+            margin-bottom: 25px;
+            animation: bounceIn 1.2s ease-out; /* Icon bounce animation */
+        }
+
+        /* Message Heading */
+        .message-container h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        /* Message Paragraph */
+        .message-container p {
+            font-size: 1.1em;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Button Styling */
+        .home-button {
+            display: inline-block;
+            background-color: #FFA500; /* Orange button */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 165, 0, 0.3); /* Subtle shadow for button */
+        }
+
+        .home-button:hover {
+            background-color: #e69500; /* Darker orange on hover */
+            transform: translateY(-3px); /* Lift effect */
+            box-shadow: 0 6px 15px rgba(255, 165, 0, 0.4);
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 600px) {
+            .message-container {
+                padding: 30px 20px;
+                margin: 20px; /* Add some margin on very small screens */
+            }
+            .message-icon {
+                font-size: 3em;
+                margin-bottom: 20px;
+            }
+            .message-container h1 {
+                font-size: 1.8em;
+            }
+            .message-container p {
+                font-size: 0.95em;
+                margin-bottom: 25px;
+            }
+            .home-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .message-container h1 {
+                font-size: 1.5em;
+            }
+            .message-container p {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="message-container">
+        <i class="fas fa-tools message-icon"></i> <!-- Icon for "tools" or "development" -->
+        <h1>Great Things Are Brewing!</h1>
+        <p>We're actively working on exciting new features, including user login, personalized profiles, and more seamless shopping experiences.</p>
+        <p>Stay tuned for our upcoming updates!</p>
+        <a href="/index" class="home-button">Back to Home</a>
+    </div>
+</body>
+</html>

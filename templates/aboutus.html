@@ -1,0 +1,1819 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Your Organic Platform</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- General Body & Container Styles --- */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white; /* Ensure entire page background is white */
+        }
+
+        /* --- Navbar Styles (Sticky Header) --- */
+        .navbar {
+            background-color: #f8f8f8; /* Light background for navbar */
+            color: #333;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky; /* Makes the navbar sticky */
+            top: 0; /* Sticks to the top of the viewport */
+            z-index: 1000; /* Ensures it stays on top of other content */
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #FFA500; /* Primary brand color for logo */
+        }
+
+        .navbar-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar-links li {
+            margin-left: 30px;
+        }
+
+        .navbar-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-links a:hover {
+            color: #FFA500;
+        }
+
+        .navbar-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar-icons a {
+            text-decoration: none;
+            color: #555;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-icons a:hover {
+            color: #FFA500;
+        }
+
+        .navbar-icons .fas {
+            margin-right: 5px;
+        }
+
+        .menu-toggle {
+            display: none; /* Hidden on desktop */
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* Responsive Navbar */
+        @media (max-width: 768px) {
+            .navbar-links, .navbar-icons {
+                display: none; /* Hide on smaller screens by default */
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background-color: #f8f8f8;
+                position: absolute;
+                top: 70px; /* Below the navbar */
+                left: 0;
+                padding: 15px 0;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            }
+
+            .navbar-links.active, .navbar-icons.active {
+                display: flex; /* Show when active */
+            }
+
+            .navbar-links li, .navbar-icons a {
+                margin: 10px 0;
+            }
+
+            .menu-toggle {
+                display: block; /* Show menu toggle on smaller screens */
+            }
+
+            .navbar {
+                flex-wrap: wrap; /* Allow wrapping for logo and toggle */
+            }
+        }
+
+
+        /* --- Global Styles for About Us Page --- */
+        .about-us-body {
+            background-color: white; /* Ensure entire page background is white */
+        }
+
+        .about-us-main {
+            padding-top: 80px; /* Adjust based on navbar height to prevent content from going under it */
+            padding-bottom: 40px; /* Space before footer */
+        }
+
+        /* Common Section Styling for About Us Page */
+        .about-us-main section {
+            padding: 60px 20px;
+            margin-bottom: 30px;
+            background-color: white; /* Explicitly white background for sections */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Subtle shadow */
+            max-width: 1200px; /* Max width for content */
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .about-us-main section h2 {
+            font-size: 2.8em; /* Larger headings */
+            color: #333;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .about-us-main section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 100px; /* Longer underline */
+            height: 5px; /* Thicker underline */
+            background-color: #FFA500;
+            border-radius: 2.5px;
+        }
+
+        /* --- About Hero Section --- */
+        .about-hero-section {
+            background: linear-gradient(rgba(255, 165, 0, 0.1), rgba(255, 165, 0, 0.05)), url('https://via.placeholder.com/1500x500/FFA500/FFFFFF?text=About+Us+Hero') no-repeat center center/cover;
+            color: #333; /* Darker text for contrast */
+            padding: 100px 20px;
+            border-radius: 0; /* No rounded corners for full width hero */
+            box-shadow: none;
+            margin-bottom: 0; /* No margin at the bottom */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px; /* Minimum height */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .about-hero-section .hero-content {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .about-hero-section h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            color: #333;
+            animation: fadeInDown 1s ease-out; /* Animation for heading */
+        }
+
+        .about-hero-section p {
+            font-size: 1.5em;
+            line-height: 1.6;
+            color: #555;
+            animation: fadeInUp 1s ease-out 0.3s forwards; /* Animation for paragraph with delay */
+            opacity: 0; /* Start invisible */
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Our Startup Section --- */
+        .our-startup-section {
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+            align-items: center;
+            gap: 40px;
+            text-align: left; /* Default text alignment */
+            background-color: #f8f8f8; /* Slightly off-white background */
+        }
+
+        .our-startup-section h2 {
+            text-align: left; /* Align heading left */
+        }
+
+        .our-startup-section h2::after {
+            left: 0; /* Underline starts from left */
+            transform: translateX(0);
+        }
+
+        .startup-content {
+            flex: 2; /* Takes more space */
+            min-width: 300px;
+        }
+
+        .startup-content p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .startup-image {
+            flex: 1; /* Takes less space */
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .startup-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .startup-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* --- Our Team Section --- */
+        .our-team-section {
+            background-color: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .team-member-card {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden; /* For image border effect */
+        }
+
+        .team-member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .team-member-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid #FFA500; /* Orange border */
+            padding: 3px; /* Space inside border */
+            transition: transform 0.3s ease;
+        }
+
+        .team-member-card:hover img {
+            transform: scale(1.05); /* Slight zoom on image hover */
+        }
+
+        .team-member-card h3 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .team-member-card p {
+            font-size: 1.1em;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .team-member-card .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .team-member-card .social-links a {
+            color: #555;
+            font-size: 1.5em;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .team-member-card .social-links a:hover {
+            color: #FFA500;
+            transform: translateY(-3px);
+        }
+
+        /* --- Our Services Section (About Page Specific) --- */
+        .our-services-about-page {
+            background-color: #f8f8f8; /* Slightly off-white background */
+        }
+
+        .services-grid-about-page {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .service-card-about-page {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card-about-page:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-card-about-page img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            border-radius: 50%; /* Make images circular */
+            background-color: #ffe0b2; /* Light orange background for icons */
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card-about-page:hover img {
+            transform: rotateY(180deg); /* Flip effect on hover */
+        }
+
+        .service-card-about-page h3 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .service-card-about-page p {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* --- Responsive Adjustments for About Us Page --- */
+        @media (max-width: 992px) {
+            .about-hero-section h1 {
+                font-size: 3em;
+            }
+            .about-hero-section p {
+                font-size: 1.2em;
+            }
+            .our-startup-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .our-startup-section h2 {
+                text-align: center;
+            }
+            .our-startup-section h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .startup-image {
+                order: -1; /* Move image above text on smaller screens */
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-us-main section {
+                padding: 40px 15px;
+            }
+            .about-us-main section h2 {
+                font-size: 2.2em;
+            }
+            .about-hero-section {
+                min-height: 300px;
+                padding: 60px 15px;
+            }
+            .about-hero-section h1 {
+                font-size: 2.5em;
+            }
+            .about-hero-section p {
+                font-size: 1em;
+            }
+            .team-grid, .services-grid-about-page {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 20px;
+            }
+            .team-member-card, .service-card-about-page {
+                padding: 20px;
+            }
+            .team-member-card img, .service-card-about-page img {
+                width: 120px;
+                height: 120px;
+            }
+            .team-member-card h3, .service-card-about-page h3 {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-us-main section h2 {
+                font-size: 1.8em;
+            }
+            .about-hero-section h1 {
+                font-size: 2em;
+            }
+            .team-grid, .services-grid-about-page {
+                grid-template-columns: 1fr; /* Single column on very small screens */
+            }
+        }
+
+        /* --- Animation Classes (for Intersection Observer) --- */
+        /* These classes will be added by JavaScript to trigger animations */
+        .section-animated {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .section-animated.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Specific animations for elements within sections */
+        .our-startup-section.animate-in .startup-content,
+        .our-startup-section.animate-in .startup-image {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        .our-startup-section.animate-in .startup-image {
+            animation-delay: 0.3s; /* Image appears slightly after text */
+        }
+
+        .our-team-section.animate-in .team-member-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        .our-team-section.animate-in .team-member-card:nth-child(1) { animation-delay: 0.1s; }
+        .our-team-section.animate-in .team-member-card:nth-child(2) { animation-delay: 0.2s; }
+        .our-team-section.animate-in .team-member-card:nth-child(3) { animation-delay: 0.3s; }
+        .our-team-section.animate-in .team-member-card:nth-child(4) { animation-delay: 0.4s; }
+        /* Add more nth-child rules if you have more team members */
+
+
+        .our-services-about-page.animate-in .service-card-about-page {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        .our-services-about-page.animate-in .service-card-about-page:nth-child(1) { animation-delay: 0.1s; }
+        .our-services-about-page.animate-in .service-card-about-page:nth-child(2) { animation-delay: 0.2s; }
+        .our-services-about-page.animate-in .service-card-about-page:nth-child(3) { animation-delay: 0.3s; }
+        .our-services-about-page.animate-in .service-card-about-page:nth-child(4) { animation-delay: 0.4s; }
+        .our-services-about-page.animate-in .service-card-about-page:nth-child(5) { animation-delay: 0.5s; }
+        .our-services-about-page.animate-in .service-card-about-page:nth-child(6) { animation-delay: 0.6s; }
+        /* Add more nth-child rules if you have more service cards */
+
+        /* Keyframes for the fadeInUp animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Footer Styles (Direct CSS Conversion from Tailwind) --- */
+        .footer {
+            background-color: #330033; /* Deep Purple Background */
+            color: white; /* Default text color for the footer */
+            padding: 3rem 1rem; /* py-12 / py-16 from Tailwind converted to rem/px */
+            font-family: Arial, sans-serif; /* Fallback font */
+            overflow: hidden; /* To handle any overflow from animations */
+        }
+
+        .footer .container {
+            max-width: 1280px; /* Equivalent to lg:px-8, container mx-auto */
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem; /* px-4 */
+            padding-right: 1rem; /* px-4 */
+        }
+
+        /* --- Grid Layout for Footer Columns --- */
+        .footer .grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Default to single column on mobile */
+            gap: 2rem; /* gap-8 */
+            margin-bottom: 2.5rem; /* mb-10 */
+            text-align: center; /* text-center */
+        }
+
+        /* Medium screens (md) and up */
+        @media (min-width: 768px) { /* Corresponds to md: from Tailwind */
+            .footer .grid {
+                grid-template-columns: repeat(4, 1fr); /* 4 columns on larger screens */
+                text-align: left; /* md:text-left */
+            }
+        }
+
+        /* --- Brand Info Section --- */
+        .footer h4 {
+            font-family: 'Bebas Neue', sans-serif; /* Your custom font */
+            font-size: 2rem; /* text-2xl */
+            margin-bottom: 1rem; /* mb-4 */
+            color: #FFA500; /* text-primary-yellow */
+        }
+
+        .footer p {
+            font-size: 0.875rem; /* text-sm */
+            color: #a0aec0; /* gray-400 */
+            line-height: 1.5;
+        }
+
+        /* --- Heading for Link Sections (Shop, About, Support) --- */
+        .footer h5 {
+            font-weight: 600; /* font-semibold */
+            font-size: 1.125rem; /* text-lg */
+            margin-bottom: 1rem; /* mb-4 */
+            color: white; /* text-white */
+        }
+
+        /* --- List Styles for Links --- */
+        .footer ul {
+            list-style: none; /* Remove bullet points */
+            padding: 0;
+            margin: 0;
+            display: flex; /* For space-y-2 effect */
+            flex-direction: column; /* For space-y-2 effect */
+            gap: 0.5rem; /* space-y-2 */
+        }
+
+        .footer ul li a {
+            font-size: 0.875rem; /* text-sm */
+            color: #a0aec0; /* gray-400 */
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+            display: inline-block; /* Required for transform on inline elements */
+        }
+
+        .footer ul li a:hover {
+            color: #FFA500; /* hover:text-primary-yellow */
+            transform: translateX(5px); /* Slight slide on hover */
+        }
+
+        /* --- Bottom Section (Copyright & Socials) --- */
+        .footer .border-top { /* Changed from .border-t to avoid confusion with Tailwind */
+            border-top: 1px solid #4a5568; /* border-gray-700 */
+            padding-top: 2rem; /* pt-8 */
+            display: flex;
+            flex-direction: column; /* flex-col */
+            justify-content: space-between;
+            align-items: center; /* items-center */
+        }
+
+        /* Medium screens (md) and up */
+        @media (min-width: 768px) {
+            .footer .border-top {
+                flex-direction: row; /* md:flex-row */
+            }
+        }
+
+        .footer .border-top p {
+            font-size: 0.875rem; /* text-sm */
+            color: #a0aec0; /* gray-500 */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+
+        /* Medium screens (md) and up */
+        @media (min-width: 768px) {
+            .footer .border-top p {
+                margin-bottom: 0; /* md:mb-0 */
+            }
+        }
+
+        /* --- Social Media Icons --- */
+        .footer .social-icons-wrapper { /* Renamed from .flex.space-x-5 for clarity */
+            display: flex;
+            gap: 1.25rem; /* space-x-5 */
+        }
+
+        .footer .social-icons-wrapper a {
+            color: #a0aec0; /* gray-400 */
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover */
+        }
+
+        .footer .social-icons-wrapper a:hover {
+            color: #FFA500; /* hover:text-primary-yellow */
+            transform: translateY(-3px) scale(1.1); /* Lift and scale effect */
+        }
+
+        .footer .social-icons-wrapper a .fab { /* Target Font Awesome icons */
+            font-size: 1.25rem; /* text-xl */
+        }
+
+        /* --- Footer Animation Classes (for Intersection Observer Triggered) --- */
+        /* Initial state: elements are invisible */
+        .footer-column-animated > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: none; /* Ensure no default transition interferes before animation */
+        }
+
+        /* Animation state: triggered by JavaScript adding 'animate-in' class */
+        .footer-column-animated.animate-in > * {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Staggered delays for each column using child selectors */
+        .footer-column-animated:nth-child(1).animate-in > * { animation-delay: 0.1s; }
+        .footer-column-animated:nth-child(2).animate-in > * { animation-delay: 0.2s; }
+        .footer-column-animated:nth-child(3).animate-in > * { animation-delay: 0.3s; }
+        .footer-column-animated:nth-child(4).animate-in > * { animation-delay: 0.4s; }
+
+        /* Optional: Deeper stagger for list items within each column */
+        .footer-column-animated.animate-in ul li:nth-child(1) { animation-delay: 0.15s; }
+        .footer-column-animated.animate-in ul li:nth-child(2) { animation-delay: 0.2s; }
+        .footer-column-animated.animate-in ul li:nth-child(3) { animation-delay: 0.25s; }
+        .footer-column-animated.animate-in ul li:nth-child(4) { animation-delay: 0.3s; }
+
+    </style>
+</head>
+<body class="about-us-body">
+
+    <nav class="navbar">
+        <div class="navbar-logo">Your Logo</div>
+        <ul class="navbar-links">
+            <li><a href="/index">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="/contactus">Contact Us</a></li>
+        </ul>
+        <div class="navbar-icons">
+            <a href="/unknown"><i class="fas fa-user-circle"></i> Profile</a>
+            <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <main class="about-us-main">
+        <section class="about-hero-section section-animated">
+            <div class="hero-content">
+                <h1>About Our Journey</h1>
+                <p>Discover the passion and purpose behind our organic products. We're more than just a brand; we're a commitment to health, sustainability, and community.</p>
+            </div>
+        </section>
+
+        <section class="our-startup-section section-animated">
+            <div class="startup-content">
+                <h2>Our Startup Story</h2>
+                <p>Founded with a vision to revolutionize access to authentic organic products, our journey began in 2020. We noticed a gap in the market for genuinely natural and ethically sourced goods. From humble beginnings, we've grown into a trusted platform, connecting consumers directly with farmers who share our values.</p>
+                <p>Our mission is to empower healthier lifestyles by providing premium quality honey, ghee, millets, and a diverse range of organic essentials. We believe in transparency, sustainable practices, and fostering a community that prioritizes well-being and environmental stewardship.</p>
+                <p>Every product we offer is a testament to our dedication to purity and a better future. We're constantly exploring new ways to expand our offerings while maintaining our core principles of quality, integrity, and customer satisfaction.</p>
+            </div>
+            <div class="startup-image">
+                <img src="https://bing.com/th/id/BCO.1cf1b10c-39db-4217-a2e1-868f30b5e759.png" alt="Our Startup Vision">
+            </div>
+        </section>
+
+        <section class="our-team-section section-animated">
+            <h2>Meet Our Dedicated Team</h2>
+            <div class="team-grid">
+                <div class="team-member-card">
+                    <img src="https://static.vecteezy.com/system/resources/previews/036/885/313/large_2x/blue-profile-icon-free-png.png" alt="John Doe">
+                    <h3>John Doe</h3>
+                    <p>Founder & CEO</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-member-card">
+                    <img src="https://static.vecteezy.com/system/resources/previews/036/885/313/large_2x/blue-profile-icon-free-png.png" alt="Jane Smith">
+                    <h3>Jane Smith</h3>
+                    <p>Head of Operations</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member-card">
+                    <img src="https://static.vecteezy.com/system/resources/previews/036/885/313/large_2x/blue-profile-icon-free-png.png" alt="Mike Williams">
+                    <h3>Mike Williams</h3>
+                    <p>Product Specialist</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                 <div class="team-member-card">
+                    <img src="https://static.vecteezy.com/system/resources/previews/036/885/313/large_2x/blue-profile-icon-free-png.png" alt="Sarah Lee">
+                    <h3>Sarah Lee</h3>
+                    <p>Marketing Lead</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="our-services-about-page section-animated">
+            <h2>Our Comprehensive Services</h2>
+            <div class="services-grid-about-page">
+                <div class="service-card-about-page">
+                    <img src="https://www.creativefabrica.com/wp-content/uploads/2021/09/21/Fast-Delivery-Icon-Graphics-17621993-1.jpg" alt="Express Delivery">
+                    <h3>Express Delivery</h3>
+                    <p>Get your organic essentials delivered swiftly and safely to your doorstep, ensuring freshness and convenience.</p>
+                </div>
+                <div class="service-card-about-page">
+                    <img src="https://www.lythouse.com/wp-content/uploads/2024/05/ethical-sourcing.webp" alt="Ethical Sourcing">
+                    <h3>Ethical Sourcing</h3>
+                    <p>We partner directly with sustainable and ethical farms, guaranteeing the purity and origin of every product.</p>
+                </div>
+                <div class="service-card-about-page">
+                    <img src="https://www.pngitem.com/pimgs/m/43-430448_best-quality-logo-png-transparent-png.png" alt="Quality Assurance">
+                    <h3>Quality Assurance</h3>
+                    <p>Every item undergoes rigorous quality checks, from farm to packaging, to meet the highest standards.</p>
+                </div>
+                <div class="service-card-about-page">
+                    <img src="https://static.vecteezy.com/system/resources/previews/005/747/712/large_2x/24-hours-customer-service-icon-24-7-support-icon-sign-button-customer-service-icon-vector.jpg" alt="Customer Support">
+                    <h3>24/7 Customer Support</h3>
+                    <p>Our dedicated support team is always available to assist you with any queries or concerns, day or night.</p>
+                </div>
+                <div class="service-card-about-page">
+                    <img src="https://a.storyblok.com/f/102007/768x432/94c9316db2/sustainable-packaging-paper-eco-friendly-disposable-tableware-plates-cups-bowls-recycling-signs.jpg" alt="Eco-Friendly Packaging">
+                    <h3>Eco-Friendly Packaging</h3>
+                    <p>Committed to a greener planet, we use sustainable and recyclable packaging materials for all our deliveries.</p>
+                </div>
+                <div class="service-card-about-page">
+                    <img src="https://tse1.mm.bing.net/th/id/OIP.3sNDt1-_EfbG2qpHJ-b-_wHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Organic Certified">
+                    <h3>Organic Certified</h3>
+                    <p>Rest assured, all our products are 100% organic and proudly bear relevant certifications.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="grid">
+                <div class="footer-column-animated">
+                    <h4>Brand name</h4>
+                    <p>Unleash Your Shopping. <br>Redefine Organic Products.</p>
+                </div>
+                <div class="footer-column-animated">
+                    <h5>Shop</h5>
+                    <ul>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Organic Honey</a></li>
+                        <li><a href="#">Organic Products</a></li>
+                        <li><a href="#">Others</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column-animated">
+                    <h5>About</h5>
+                    <ul>
+                        <li><a href="/aboutus">Our Story</a></li>
+                        <li><a href="/unknown">Careers</a></li>
+                        <li><a href="/unknown">Press & Media</a></li>
+                        <li><a href="/unknown">Sustainability</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column-animated">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="/contactus">Contact Us</a></li>
+                        <li><a href="/privacy_policy">Privacy Policy</a></li>
+                        <li><a href="/accessibility_statement">Accessibility statement</a></li>
+                        <li><a href="/terms_and_conditions">Terms & Conditions</a></li>
+                        <li><a href="/shipping_policy">Shipping Policy</a></li>
+                        <li><a href="/refund_policy">Refund Policy</a></li>
+                    
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top">
+                <p>&copy; <span id="current-year"></span> Brand name. All Rights Reserved. Crafted with &hearts; for the Future.</p>
+                <div class="social-icons-wrapper">
+                    <a href="https://www.instagram.com/gnanow?igsh=MTJud3hlNnQyYTV4cA==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/gnanow_?t=v0L6_qBndZkFMAhhCfqqqw&s=09" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://x.com/gnanow_?t=v0L6_qBndZkFMAhhCfqqqw&s=09" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/gnanow?igsh=MTJud3hlNnQyYTV4cA==" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Navbar Mobile Toggle ---
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navbarLinks = document.querySelector('.navbar-links');
+            const navbarIcons = document.querySelector('.navbar-icons');
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    navbarLinks.classList.toggle('active');
+                    navbarIcons.classList.toggle('active');
+                });
+            }
+
+            // --- About Us Page Animations (Intersection Observer) ---
+            const animatedSections = document.querySelectorAll('.about-us-main .section-animated');
+
+            const sectionObserverOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // Trigger when 15% of the section is visible
+            };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target); // Animate once
+                    }
+                });
+            }, sectionObserverOptions);
+
+            animatedSections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // --- Footer Animation on Scroll ---
+            const footerColumns = document.querySelectorAll('.footer-column-animated');
+
+            const footerObserverOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the footer is visible
+            };
+
+            const footerObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, footerObserverOptions);
+
+            footerColumns.forEach(column => {
+                footerObserver.observe(column);
+            });
+
+            // --- Set current year for the copyright ---
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Your Organic Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- General Body & Container Styles --- */
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif; /* Changed to Inter for consistency */
+            background-color: white; /* Ensure entire page background is white */
+        }
+
+        /* --- Navbar Styles (Sticky Header) --- */
+        .navbar {
+            background-color: #f8f8f8; /* Light background for navbar */
+            color: #333;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky; /* Makes the navbar sticky */
+            top: 0; /* Sticks to the top of the viewport */
+            z-index: 1000; /* Ensures it stays on top of other content */
+            transition: background-color 0.3s ease;
+            flex-wrap: wrap; /* Allow wrapping for mobile layout */
+        }
+
+        .navbar-logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #FFA500; /* Primary brand color for logo */
+        }
+
+        .navbar-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex; /* Default on desktop */
+        }
+
+        .navbar-links li {
+            margin-left: 30px;
+        }
+
+        .navbar-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-links a:hover {
+            color: #FFA500;
+        }
+
+        .navbar-icons {
+            display: flex; /* Always visible */
+            gap: 20px;
+        }
+
+        .navbar-icons a {
+            text-decoration: none;
+            color: #555;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-icons a:hover {
+            color: #FFA500;
+        }
+
+        .navbar-icons .fas {
+            margin-right: 5px;
+        }
+
+        .menu-toggle {
+            display: none; /* Hidden on desktop */
+            font-size: 1.5em;
+            cursor: pointer;
+            margin-left: 20px; /* Space between icons and toggle */
+        }
+
+        /* Responsive Navbar */
+        @media (max-width: 768px) {
+            .navbar {
+                justify-content: space-between; /* Logo left, icons/toggle right */
+                padding: 15px; /* Adjust padding for mobile */
+            }
+            .navbar-links {
+                display: none; /* Hide main links by default on smaller screens */
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background-color: #f8f8f8;
+                position: absolute; /* Position below the main navbar line */
+                top: 70px; /* Adjust based on navbar height */
+                left: 0;
+                padding: 15px 0;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            }
+            .navbar-links.active {
+                display: flex; /* Show main links when active */
+            }
+            .navbar-links li {
+                margin: 10px 0; /* Vertical spacing for mobile links */
+            }
+            .navbar-icons {
+                /* No display: none here, they remain visible */
+                order: 2; /* Position icons after logo but before toggle on mobile */
+                margin-left: auto; /* Push icons to the right */
+            }
+            .menu-toggle {
+                display: block; /* Show menu toggle on smaller screens */
+                order: 3; /* Position toggle last on mobile */
+            }
+        }
+
+        /* --- Global Styles for About Us Page --- */
+        .about-us-body {
+            background-color: white; /* Ensure entire page background is white */
+        }
+
+        .about-us-main {
+            padding-top: 80px; /* Adjust based on navbar height to prevent content from going under it */
+            padding-bottom: 40px; /* Space before footer */
+        }
+
+        /* Common Section Styling for About Us Page */
+        .about-us-main section {
+            padding: 60px 20px;
+            margin-bottom: 30px;
+            background-color: white; /* Explicitly white background for sections */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Subtle shadow */
+            max-width: 1200px; /* Max width for content */
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .about-us-main section h2 {
+            font-size: 2.8em; /* Larger headings */
+            color: #333;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .about-us-main section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 100px; /* Longer underline */
+            height: 5px; /* Thicker underline */
+            background-color: #FFA500;
+            border-radius: 2.5px;
+        }
+
+        /* --- About Hero Section --- */
+        .about-hero-section {
+            background: linear-gradient(rgba(255, 165, 0, 0.1), rgba(255, 165, 0, 0.05)), url('https://via.placeholder.com/1500x500/FFA500/FFFFFF?text=About+Us+Hero') no-repeat center center/cover;
+            color: #333; /* Darker text for contrast */
+            padding: 100px 20px;
+            border-radius: 0; /* No rounded corners for full width hero */
+            box-shadow: none;
+            margin-bottom: 0; /* No margin at the bottom */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px; /* Minimum height */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .about-hero-section .hero-content {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .about-hero-section h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            color: #333;
+            animation: fadeInDown 1s ease-out; /* Animation for heading */
+        }
+
+        .about-hero-section p {
+            font-size: 1.5em;
+            line-height: 1.6;
+            color: #555;
+            animation: fadeInUp 1s ease-out 0.3s forwards; /* Animation for paragraph with delay */
+            opacity: 0; /* Start invisible */
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Our Startup Section --- */
+        .our-startup-section {
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+            align-items: center;
+            gap: 40px;
+            text-align: left; /* Default text alignment */
+            background-color: #f8f8f8; /* Slightly off-white background */
+        }
+
+        .our-startup-section h2 {
+            text-align: left; /* Align heading left */
+        }
+
+        .our-startup-section h2::after {
+            left: 0; /* Underline starts from left */
+            transform: translateX(0);
+        }
+
+        .startup-content {
+            flex: 2; /* Takes more space */
+            min-width: 300px;
+        }
+
+        .startup-content p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .startup-image {
+            flex: 1; /* Takes less space */
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .startup-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .startup-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* --- Our Team Section --- */
+        .our-team-section {
+            background-color: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .team-member-card {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden; /* For image border effect */
+        }
+
+        .team-member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .team-member-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid #FFA500; /* Orange border */
+            padding: 3px; /* Space inside border */
+            transition: transform 0.3s ease;
+        }
+
+        .team-member-card:hover img {
+            transform: scale(1.05); /* Slight zoom on image hover */
+        }
+
+        .team-member-card h3 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .team-member-card p {
+            font-size: 1.1em;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .team-member-card .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .team-member-card .social-links a {
+            color: #555;
+            font-size: 1.5em;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .team-member-card .social-links a:hover {
+            color: #FFA500;
+            transform: translateY(-3px);
+        }
+
+        /* --- Our Services Section (About Page Specific) --- */
+        .our-services-about-page {
+            background-color: #f8f8f8; /* Slightly off-white background */
+        }
+
+        .services-grid-about-page {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .service-card-about-page {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card-about-page:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-card-about-page img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            border-radius: 50%; /* Make images circular */
+            background-color: #ffe0b2; /* Light orange background for icons */
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card-about-page:hover img {
+            transform: rotateY(180deg); /* Flip effect on hover */
+        }
+
+        .service-card-about-page h3 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .service-card-about-page p {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* --- Responsive Adjustments for About Us Page --- */
+        @media (max-width: 992px) {
+            .about-hero-section h1 {
+                font-size: 3em;
+            }
+            .about-hero-section p {
+                font-size: 1.2em;
+            }
+            .our-startup-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .our-startup-section h2 {
+                text-align: center;
+            }
+            .our-startup-section h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .startup-image {
+                order: -1; /* Move image above text on smaller screens */
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-us-main section {
+                padding: 40px 15px;
+            }
+            .about-us-main section h2 {
+                font-size: 2.2em;
+            }
+            .about-hero-section {
+                min-height: 300px;
+                padding: 60px 15px;
+            }
+            .about-hero-section h1 {
+                font-size: 2.5em;
+            }
+            .about-hero-section p {
+                font-size: 1em;
+            }
+            .team-grid, .services-grid-about-page {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 20px;
+            }
+            .team-member-card, .service-card-about-page {
+                padding: 20px;
+            }
+            .team-member-card img, .service-card-about-page img {
+                width: 120px;
+                height: 120px;
+            }
+            .team-member-card h3, .service-card-about-page h3 {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-us-main section h2 {
+                font-size: 1.8em;
+            }
+            .about-hero-section h1 {
+                font-size: 2em;
+            }
+            .team-grid, .services-grid-about-page {
+                grid-template-columns: 1fr; /* Single column on very small screens */
+            }
+        }
+
+        /* --- Animation Classes (for Intersection Observer) --- */
+        /* These classes will be added by JavaScript to trigger animations */
+        .section-animated {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .section-animated.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Specific animations for elements within sections */
+        .our-startup-section.animate-in .startup-content,
+        .our-startup-section.animate-in .startup-image {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        .our-startup-section.animate-in .startup-image {
+            animation-delay: 0.3s; /* Image appears slightly after text */
+        }
+
+        .our-team-section.animate-in .team-member-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        .our-team-section.animate-in .team-member-card:nth-child(1) { animation-delay: 0.1s; }
+        .our-team-section.animate-in .team-member-card:nth-child(2) { animation-delay: 0.2s; }
+        .our-team-section.animate-in .team-member-card:nth-child(3) { animation-delay: 0.3s; }
+        .our-team-section.animate-in .team-member-card:nth-child(4) { animation-delay: 0.4s; }
+        /* Add more nth-child rules if you have more team members */
+
+
+        .our-services-about-page.animate-in .service-card-about-page {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        .our-services-about-page.animate-in .service-card-about-page:nth-child(1) { animation-delay: 0.1s; }
+        .our-services-about-page.animate-in .service-card-about-page:nth-child(2) { animation-delay: 0.2s; }
+        .our-services-about-page.animate-in .service-card-about-page:nth-child(3) { animation-delay: 0.3s; }
+        .our-services-about-page.animate-in .service-card-about-page:nth-child(4) { animation-delay: 0.4s; }
+        .our-services-about-page.animate-in .service-card-about-page:nth-child(5) { animation-delay: 0.5s; }
+        .our-services-about-page.animate-in .service-card-about-page:nth-child(6) { animation-delay: 0.6s; }
+        /* Add more nth-child rules if you have more service cards */
+
+        /* Keyframes for the fadeInUp animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Footer Styles (Direct CSS Conversion from Tailwind) --- */
+        .footer {
+            background-color: #330033; /* Deep Purple Background */
+            color: white; /* Default text color for the footer */
+            padding: 3rem 1rem; /* py-12 / py-16 from Tailwind converted to rem/px */
+            font-family: 'Inter', sans-serif; /* Fallback font, changed to Inter */
+            overflow: hidden; /* To handle any overflow from animations */
+        }
+
+        .footer .container {
+            max-width: 1280px; /* Equivalent to lg:px-8, container mx-auto */
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem; /* px-4 */
+            padding-right: 1rem; /* px-4 */
+        }
+
+        /* --- Grid Layout for Footer Columns --- */
+        .footer .grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Default to single column on mobile */
+            gap: 2rem; /* gap-8 */
+            margin-bottom: 2.5rem; /* mb-10 */
+            text-align: center; /* text-center */
+        }
+
+        /* Medium screens (md) and up */
+        @media (min-width: 768px) { /* Corresponds to md: from Tailwind */
+            .footer .grid {
+                grid-template-columns: repeat(4, 1fr); /* 4 columns on larger screens */
+                text-align: left; /* md:text-left */
+            }
+        }
+
+        /* --- Brand Info Section --- */
+        .footer h4 {
+            font-family: 'Bebas Neue', sans-serif; /* Your custom font */
+            font-size: 2rem; /* text-2xl */
+            margin-bottom: 1rem; /* mb-4 */
+            color: #FFA500; /* text-primary-yellow */
+        }
+
+        .footer p {
+            font-size: 0.875rem; /* text-sm */
+            color: #a0aec0; /* gray-400 */
+            line-height: 1.5;
+        }
+
+        /* --- Heading for Link Sections (Shop, About, Support) --- */
+        .footer h5 {
+            font-weight: 600; /* font-semibold */
+            font-size: 1.125rem; /* text-lg */
+            margin-bottom: 1rem; /* mb-4 */
+            color: white; /* text-white */
+        }
+
+        /* --- List Styles for Links --- */
+        .footer ul {
+            list-style: none; /* Remove bullet points */
+            padding: 0;
+            margin: 0;
+            display: flex; /* For space-y-2 effect */
+            flex-direction: column; /* For space-y-2 effect */
+            gap: 0.5rem; /* space-y-2 */
+        }
+
+        .footer ul li a {
+            font-size: 0.875rem; /* text-sm */
+            color: #a0aec0; /* gray-400 */
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+            display: inline-block; /* Required for transform on inline elements */
+        }
+
+        .footer ul li a:hover {
+            color: #FFA500; /* hover:text-primary-yellow */
+            transform: translateX(5px); /* Slight slide on hover */
+        }
+
+        /* --- Bottom Section (Copyright & Socials) --- */
+        .footer .border-top { /* Changed from .border-t to avoid confusion with Tailwind */
+            border-top: 1px solid #4a5568; /* border-gray-700 */
+            padding-top: 2rem; /* pt-8 */
+            display: flex;
+            flex-direction: column; /* flex-col */
+            justify-content: space-between;
+            align-items: center; /* items-center */
+        }
+
+        /* Medium screens (md) and up */
+        @media (min-width: 768px) {
+            .footer .border-top {
+                flex-direction: row; /* md:flex-row */
+            }
+        }
+
+        .footer .border-top p {
+            font-size: 0.875rem; /* text-sm */
+            color: #a0aec0; /* gray-500 */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+
+        /* Medium screens (md) and up */
+        @media (min-width: 768px) {
+            .footer .border-top p {
+                margin-bottom: 0; /* md:mb-0 */
+            }
+        }
+
+        /* --- Social Media Icons --- */
+        .footer .social-icons-wrapper { /* Renamed from .flex.space-x-5 for clarity */
+            display: flex;
+            gap: 1.25rem; /* space-x-5 */
+        }
+
+        .footer .social-icons-wrapper a {
+            color: #a0aec0; /* gray-400 */
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover */
+        }
+
+        .footer .social-icons-wrapper a:hover {
+            color: #FFA500; /* hover:text-primary-yellow */
+            transform: translateY(-3px) scale(1.1); /* Lift and scale effect */
+        }
+
+        .footer .social-icons-wrapper a .fab { /* Target Font Awesome icons */
+            font-size: 1.25rem; /* text-xl */
+        }
+
+        /* --- Footer Animation Classes (for Intersection Observer Triggered) --- */
+        /* Initial state: elements are invisible */
+        .footer-column-animated > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: none; /* Ensure no default transition interferes before animation */
+        }
+
+        /* Animation state: triggered by JavaScript adding 'animate-in' class */
+        .footer-column-animated.animate-in > * {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Staggered delays for each column using child selectors */
+        .footer-column-animated:nth-child(1).animate-in > * { animation-delay: 0.1s; }
+        .footer-column-animated:nth-child(2).animate-in > * { animation-delay: 0.2s; }
+        .footer-column-animated:nth-child(3).animate-in > * { animation-delay: 0.3s; }
+        .footer-column-animated:nth-child(4).animate-in > * { animation-delay: 0.4s; }
+
+        /* Optional: Deeper stagger for list items within each column */
+        .footer-column-animated.animate-in ul li:nth-child(1) { animation-delay: 0.15s; }
+        .footer-column-animated.animate-in ul li:nth-child(2) { animation-delay: 0.2s; }
+        .footer-column-animated.animate-in ul li:nth-child(3) { animation-delay: 0.25s; }
+        .footer-column-animated.animate-in ul li:nth-child(4) { animation-delay: 0.3s; }
+
+    </style>
+</head>
+<body class="about-us-body">
+
+    <nav class="navbar">
+        <div class="navbar-logo">Your Logo</div>
+        <ul class="navbar-links">
+            <li><a href="/index">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/contactus">Contact Us</a></li>
+        </ul>
+        <div class="navbar-icons">
+            <a href="/unknown"><i class="fas fa-user-circle"></i> Profile</a>
+            <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <main class="about-us-main">
+        <section class="about-hero-section section-animated">
+            <div class="hero-content">
+                <h1>About Our Journey</h1>
+                <p>Discover the passion and purpose behind our organic products. We're more than just a brand; we're a commitment to health, sustainability, and community.</p>
+            </div>
+        </section>
+
+        <section class="our-startup-section section-animated">
+            <div class="startup-content">
+                <h2>Our Startup Story</h2>
+                <p>Founded with a vision to revolutionize access to authentic organic products, our journey began in 2020. We noticed a gap in the market for genuinely natural and ethically sourced goods. From humble beginnings, we've grown into a trusted platform, connecting consumers directly with farmers who share our values.</p>
+                <p>Our mission is to empower healthier lifestyles by providing premium quality honey, ghee, millets, and a diverse range of organic essentials. We believe in transparency, sustainable practices, and fostering a community that prioritizes well-being and environmental stewardship.</p>
+                <p>Every product we offer is a testament to our dedication to purity and a better future. We're constantly exploring new ways to expand our offerings while maintaining our core principles of quality, integrity, and customer satisfaction.</p>
+            </div>
+            <div class="startup-image">
+                <img src="https://bing.com/th/id/BCO.1cf1b10c-39db-4217-a2e1-868f30b5e759.png" alt="Our Startup Vision">
+            </div>
+        </section>
+
+        <section class="our-team-section section-animated">
+            <h2>Meet Our Dedicated Team</h2>
+            <div class="team-grid">
+                <div class="team-member-card">
+                    <img src="https://static.vecteezy.com/system/resources/previews/036/885/313/large_2x/blue-profile-icon-free-png.png" alt="John Doe">
+                    <h3>John Doe</h3>
+                    <p>Founder & CEO</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-member-card">
+                    <img src="https://static.vecteezy.com/system/resources/previews/036/885/313/large_2x/blue-profile-icon-free-png.png" alt="Jane Smith">
+                    <h3>Jane Smith</h3>
+                    <p>Head of Operations</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member-card">
+                    <img src="https://static.vecteezy.com/system/resources/previews/036/885/313/large_2x/blue-profile-icon-free-png.png" alt="Mike Williams">
+                    <h3>Mike Williams</h3>
+                    <p>Product Specialist</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="team-member-card">
+                    <img src="https://static.vecteezy.com/system/resources/previews/036/885/313/large_2x/blue-profile-icon-free-png.png" alt="Sarah Lee">
+                    <h3>Sarah Lee</h3>
+                    <p>Marketing Lead</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="our-services-about-page section-animated">
+            <h2>Our Comprehensive Services</h2>
+            <div class="services-grid-about-page">
+                <div class="service-card-about-page">
+                    <img src="https://www.creativefabrica.com/wp-content/uploads/2021/09/21/Fast-Delivery-Icon-Graphics-17621993-1.jpg" alt="Express Delivery">
+                    <h3>Express Delivery</h3>
+                    <p>Get your organic essentials delivered swiftly and safely to your doorstep, ensuring freshness and convenience.</p>
+                </div>
+                <div class="service-card-about-page">
+                    <img src="https://www.lythouse.com/wp-content/uploads/2024/05/ethical-sourcing.webp" alt="Ethical Sourcing">
+                    <h3>Ethical Sourcing</h3>
+                    <p>We partner directly with sustainable and ethical farms, guaranteeing the purity and origin of every product.</p>
+                </div>
+                <div class="service-card-about-page">
+                    <img src="https://www.pngitem.com/pimgs/m/43-430448_best-quality-logo-png-transparent-png.png" alt="Quality Assurance">
+                    <h3>Quality Assurance</h3>
+                    <p>Every item undergoes rigorous quality checks, from farm to packaging, to meet the highest standards.</p>
+                </div>
+                <div class="service-card-about-page">
+                    <img src="https://static.vecteezy.com/system/resources/previews/005/747/712/large_2x/24-hours-customer-service-icon-24-7-support-icon-sign-button-customer-service-icon-vector.jpg" alt="Customer Support">
+                    <h3>24/7 Customer Support</h3>
+                    <p>Our dedicated support team is always available to assist you with any queries or concerns, day or night.</p>
+                </div>
+                <div class="service-card-about-page">
+                    <img src="https://a.storyblok.com/f/102007/768x432/94c9316db2/sustainable-packaging-paper-eco-friendly-disposable-tableware-plates-cups-bowls-recycling-signs.jpg" alt="Eco-Friendly Packaging">
+                    <h3>Eco-Friendly Packaging</h3>
+                    <p>Committed to a greener planet, we use sustainable and recyclable packaging materials for all our deliveries.</p>
+                </div>
+                <div class="service-card-about-page">
+                    <img src="https://tse1.mm.bing.net/th/id/OIP.3sNDt1-_EfbG2qpHJ-b-_wHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Organic Certified">
+                    <h3>Organic Certified</h3>
+                    <p>Rest assured, all our products are 100% organic and proudly bear relevant certifications.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="grid">
+                <div class="footer-column-animated">
+                    <h4>Brand name</h4>
+                    <p>Unleash Your Shopping. <br>Redefine Organic Products.</p>
+                </div>
+                <div class="footer-column-animated">
+                    <h5>Shop</h5>
+                    <ul>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Organic Honey</a></li>
+                        <li><a href="#">Organic Products</a></li>
+                        <li><a href="#">Others</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column-animated">
+                    <h5>About</h5>
+                    <ul>
+                        <li><a href="/aboutus">Our Story</a></li>
+                        <li><a href="/unknown">Careers</a></li>
+                        <li><a href="/unknown">Press & Media</a></li>
+                        <li><a href="/unknown">Sustainability</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column-animated">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="/contactus">Contact Us</a></li>
+                        <li><a href="/privacy_policy">Privacy Policy</a></li>
+                        <li><a href="/accessibility_statement">Accessibility statement</a></li>
+                        <li><a href="/terms_and_conditions">Terms & Conditions</a></li>
+                        <li><a href="/shipping_policy">Shipping Policy</a></li>
+                        <li><a href="/refund_policy">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top">
+                <p>&copy; <span id="current-year"></span> Brand name. All Rights Reserved. Crafted with &hearts; for the Future.</p>
+                <div class="social-icons-wrapper">
+                    <a href="https://www.instagram.com/gnanow?igsh=MTJud3hlNnQyYTV4cA==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/gnanow_?t=v0L6_qBndZkFMAhhCfqqqw&s=09" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://x.com/gnanow_?t=v0L6_qBndZkFMAhhCfqqqw&s=09" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/gnanow?igsh=MTJud3hlNnQyYTV4cA==" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navbar Mobile Toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navbarLinks = document.querySelector('.navbar-links');
+            const navbarIcons = document.querySelector('.navbar-icons'); // Keep this reference
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    navbarLinks.classList.toggle('active');
+                    // Removed this line: navbarIcons.classList.toggle('active');
+                    // The navbarIcons should always be visible on mobile, positioned correctly
+                });
+            }
+
+            // Smooth scroll for internal links (if any)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Section Animations on Scroll
+            const animatedSections = document.querySelectorAll('.section-animated');
+            const sectionObserverOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, sectionObserverOptions);
+            animatedSections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // Footer Animation on Scroll
+            const footerColumns = document.querySelectorAll('.footer-column-animated');
+            const footerObserverOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            const footerObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, footerObserverOptions);
+            footerColumns.forEach(column => {
+                footerObserver.observe(column);
+            });
+
+            // Set current year for the copyright
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>

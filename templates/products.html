@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products - Your Organic Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            background-color: white; /* White background as requested */
+            color: #333;
+        }
+
+        /* Navbar Styles (Sticky Header) */
+        .navbar {
+            background-color: #f8f8f8;
+            color: #333;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+            flex-wrap: wrap;
+        }
+
+        .navbar-logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #FFA500;
+            flex-grow: 1;
+        }
+
+        .navbar-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+        }
+
+        .navbar-links li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-links li a:hover {
+            color: #FFA500;
+        }
+
+        .navbar-icons {
+            display: flex;
+            gap: 25px;
+            margin-left: 30px;
+        }
+
+        .navbar-icons a {
+            text-decoration: none;
+            color: #555;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-icons a:hover {
+            color: #FFA500;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #555;
+            margin-left: 20px;
+        }
+
+        /* Main Content Padding */
+        main {
+            padding-top: 80px; /* To account for sticky navbar */
+            padding-bottom: 40px; /* Space before footer */
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        /* Section Common Styles */
+        section {
+            padding: 40px 20px;
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            text-align: center;
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #FFA500;
+            border-radius: 2px;
+        }
+
+        /* Sticky Category/Filter Section */
+        .category-filter-section {
+            background-color: #f8f8f8;
+            padding: 20px 0;
+            position: sticky;
+            top: 70px; /* Adjust based on navbar height */
+            z-index: 900;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .filter-btn {
+            background-color: #eee;
+            color: #555;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            white-space: nowrap; /* Prevent wrapping of text */
+        }
+
+        .filter-btn:hover {
+            background-color: #ddd;
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background-color: #FFA500;
+            color: white;
+            box-shadow: 0 2px 5px rgba(255,165,0,0.4);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            justify-content: center;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(236, 137, 8, 0.71);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: 180px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .product-card .rating {
+            color: #FFD700;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .product-card h3 {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .product-card .price {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #FFA500;
+            margin-bottom: 15px;
+        }
+
+        .product-card .quantity-dropdown {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: #f9f9f9;
+        }
+
+        .product-card .add-to-cart {
+            background-color: #FFA500;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .product-card .add-to-cart:hover {
+            background-color: #e69500;
+            transform: translateY(-2px);
+        }
+
+        .product-card .add-to-cart:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Animations for sections (on scroll) */
+        .hidden-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .visible-element {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #330033;
+            color: white;
+            padding: 3rem 1rem;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .footer .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .footer .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer .grid {
+                grid-template-columns: repeat(4, 1fr);
+                text-align: left;
+            }
+        }
+
+        .footer h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #FFA500;
+        }
+
+        .footer p {
+            font-size: 0.875rem;
+            color: #a0aec0;
+            line-height: 1.5;
+        }
+
+        .footer h5 {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer ul li a {
+            font-size: 0.875rem;
+            color: #a0aec0;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer ul li a:hover {
+            color: #FFA500;
+            transform: translateX(5px);
+        }
+
+        .footer .border-top {
+            border-top: 1px solid #4a5568;
+            padding-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer .border-top {
+                flex-direction: row;
+            }
+        }
+
+        .footer .border-top p {
+            font-size: 0.875rem;
+            color: #a0aec0;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer .border-top p {
+                margin-bottom: 0;
+            }
+        }
+
+        .footer .social-icons-wrapper {
+            display: flex;
+            gap: 1.25rem;
+        }
+
+        .footer .social-icons-wrapper a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer .social-icons-wrapper a:hover {
+            color: #FFA500;
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        .footer .social-icons-wrapper a .fab {
+            font-size: 1.25rem;
+        }
+
+        /* Footer Animation Classes */
+        .footer-column-animated > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: none;
+        }
+
+        .footer-column-animated.animate-in > * {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .footer-column-animated:nth-child(1).animate-in > * { animation-delay: 0.1s; }
+        .footer-column-animated:nth-child(2).animate-in > * { animation-delay: 0.2s; }
+        .footer-column-animated:nth-child(3).animate-in > * { animation-delay: 0.3s; }
+        .footer-column-animated:nth-child(4).animate-in > * { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px;
+            }
+            .navbar-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background-color: white;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                padding: 20px 0;
+                z-index: 999;
+            }
+            .navbar-links.active {
+                display: flex;
+            }
+            .navbar-links li {
+                text-align: center;
+                margin: 10px 0;
+            }
+            .navbar-icons {
+                margin-left: auto;
+                order: 2;
+            }
+            .menu-toggle {
+                display: block;
+                order: 3;
+            }
+
+            main {
+                padding-top: 70px; /* Adjust for smaller navbar height */
+            }
+
+            section {
+                padding: 30px 15px;
+            }
+
+            section h2 {
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+
+            .category-filter-section {
+                top: 60px; /* Adjust sticky top for mobile navbar */
+                padding: 15px 0;
+            }
+
+            .filter-buttons {
+                gap: 10px;
+                padding: 0 10px;
+            }
+
+            .filter-btn {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 20px;
+            }
+
+            .product-card {
+                padding: 15px;
+            }
+
+            .product-card img {
+                height: 120px;
+            }
+
+            .product-card h3 {
+                font-size: 1.2em;
+            }
+
+            .product-card .price {
+                font-size: 1.1em;
+            }
+
+            .product-card .add-to-cart {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 10px 15px;
+            }
+            .navbar-logo {
+                font-size: 1.5em;
+            }
+            section h2 {
+                font-size: 1.8em;
+            }
+            .filter-buttons {
+                flex-direction: column; /* Stack filter buttons vertically */
+                align-items: center;
+            }
+            .filter-btn {
+                width: 90%; /* Make buttons take more width */
+            }
+            .product-grid {
+                grid-template-columns: 1fr; /* Single column for products */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar (Header) -->
+    <nav class="navbar">
+        <div class="navbar-logo">Your Logo</div>
+        <ul class="navbar-links">
+            <li><a href="/index">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/contactus">Contact Us</a></li>
+        </ul>
+        <div class="navbar-icons">
+            <a href="/unknown"><i class="fas fa-user-circle"></i> Profile</a>
+            <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <main>
+        <h1 class="text-center text-4xl font-bold text-orange-600 mb-8">Our Organic Products</h1>
+
+        <!-- Sticky Category/Filter Section -->
+        <section class="category-filter-section hidden-element" id="category-filters">
+            <h2 class="sr-only">Filter Products by Category</h2> <!-- Screen reader only heading -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">All Products</button>
+                <button class="filter-btn" data-category="honey">Honey</button>
+                <button class="filter-btn" data-category="ghee">Ghee</button>
+                <button class="filter-btn" data-category="millets">Millets</button>
+                <button class="filter-btn" data-category="spices">Spices</button>
+                <button class="filter-btn" data-category="others">Others</button>
+            </div>
+        </section>
+
+        <!-- Products Display Section -->
+        <section class="products-display-section hidden-element">
+            <div class="product-grid" id="product-grid">
+                <!-- Products will be dynamically loaded here by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="grid">
+                <div class="footer-column-animated">
+                    <h4>Brand name</h4>
+                    <p>Unleash Your Shopping. <br>Redefine Organic Products.</p>
+                </div>
+                <div class="footer-column-animated">
+                    <h5>Shop</h5>
+                    <ul>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Organic Honey</a></li>
+                        <li><a href="#">Organic Products</a></li>
+                        <li><a href="#">Others</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column-animated">
+                    <h5>About</h5>
+                    <ul>
+                        <li><a href="/aboutus">Our Story</a></li>
+                        <li><a href="/unknown">Careers</a></li>
+                        <li><a href="/unknown">Press & Media</a></li>
+                        <li><a href="/unknown">Sustainability</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column-animated">
+                    <h5>Support</h5>
+                    <ul>
+                         <li><a href="/contactus">Contact Us</a></li>
+                        <li><a href="/privacy_policy">Privacy Policy</a></li>
+                        <li><a href="/accessibility_statement">Accessibility statement</a></li>
+                        <li><a href="/terms_and_conditions">Terms & Conditions</a></li>
+                        <li><a href="/shipping_policy">Shipping Policy</a></li>
+                        <li><a href="/refund_policy">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top">
+                <p>&copy; <span id="current-year"></span> Brand name. All Rights Reserved. Crafted with &hearts; for the Future.</p>
+                <div class="social-icons-wrapper">
+                    <a href="https://www.instagram.com/gnanow?igsh=MTJud3hlNnQyYTV4cA==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/gnanow_?t=v0L6_qBndZkFMAhhCfqqqw&s=09" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://x.com/gnanow_?t=v0L6_qBndZkFMAhhCfqqqw&s=09" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/gnanow?igsh=MTJud3hlNnQyYTV4cA==" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navbar Mobile Toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navbarLinks = document.querySelector('.navbar-links');
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    navbarLinks.classList.toggle('active');
+                });
+            }
+
+            // Close nav links when a link is clicked (for mobile)
+            navbarLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navbarLinks.classList.contains('active')) {
+                        navbarLinks.classList.remove('active');
+                    }
+                });
+            });
+
+            // Dummy Product Data
+            const products = [
+                { id: 1, name: "Wild Forest Honey", image: "https://static.wixstatic.com/media/e0ad65_d199fd00787a446796a79d6fb4c6cd4a~mv2.png/v1/fill/w_750,h_750,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/e0ad65_d199fd00787a446796a79d6fb4c6cd4a~mv2.png", rating: 5, price: 599, quantities: ["200gm", "500gm", "1000gm"], category: "honey" },
+                { id: 2, name: "Pure Cow Ghee", image: "https://static.wixstatic.com/media/e0ad65_008ab51a2c894a35bc7b6c68ac7f7a71~mv2.png/v1/fill/w_256,h_256,al_c,usm_0.66_1.00_0.01/e0ad65_008ab51a2c894a35bc7b6c68ac7f7a71~mv2.png", rating: 4, price: 799, quantities: ["200gm", "500gm", "1000gm"], category: "ghee" },
+                { id: 3, name: "Organic Red Chilli Powder", image: "https://static.wixstatic.com/media/e0ad65_2de83acb54cc423ca9b3216ce12b1cad~mv2.png/v1/fill/w_512,h_512,al_c,usm_0.66_1.00_0.01/e0ad65_2de83acb54cc423ca9b3216ce12b1cad~mv2.png", rating: 5, price: 249, quantities: ["200gm", "500gm", "1000gm"], category: "spices" },
+                { id: 4, name: "Healthy Foxtail Millets", image: "https://static.wixstatic.com/media/e0ad65_0a9f841092374be0bbc1e9af1dc8fc55~mv2.png/v1/fill/w_512,h_512,al_c,usm_0.66_1.00_0.01/e0ad65_0a9f841092374be0bbc1e9af1dc8fc55~mv2.png", rating: 5, price: 349, quantities: ["200gm", "500gm", "1000gm"], category: "millets" },
+                { id: 5, name: "Floral Infused Honey", image: "https://img.avery.com/f_auto,q_auto,c_scale,w_600/web/weprint/labels/weprint-tile-honey-recscal", rating: 4, price: 650, quantities: ["200gm", "500gm", "1000gm"], category: "honey" },
+                { id: 6, name: "Organic Rolled Oats", image: "https://www.avery.com/blog/wp-content/uploads/2021/06/blog-hero-honeylabel-3000x1134-1-scaled.jpg", rating: 4, price: 280, quantities: ["200gm", "500gm", "1000gm"], category: "others" },
+                { id: 7, name: "Spiced Cinnamon Honey", image: "https://us.honeystickers.com/cdn/shop/files/US-EI-Q453-16-003-P.png?v=1710414781", rating: 4, price: 620, quantities: ["200gm", "500gm", "1000gm"], category: "honey" },
+                { id: 8, name: "Natural Jaggery Blocks", image: "https://www.foodpackaginglabels.net/wp-content/uploads/2019/04/honey-labels.jpg", rating: 5, price: 180, quantities: ["200gm", "500gm", "1000gm"], category: "others" },
+                { id: 9, name: "Seasonal Harvest Honey", image: "https://static.wixstatic.com/media/e0ad65_6d622f0a8d8f49d5bd1fade63e138b86~mv2.png/v1/fill/w_512,h_512,al_c,usm_0.66_1.00_0.01/e0ad65_6d622f0a8d8f49d5bd1fade63e138b86~mv2.png", rating: 0, price: "Coming Soon", quantities: [], category: "honey" },
+                { id: 10, name: "Artisanal Organic Jams", image: "https://www.foodpackaginglabels.net/wp-content/uploads/2019/04/honey-labels.jpg", rating: 0, price: "Coming Soon", quantities: [], category: "others" },
+                { id: 11, name: "Premium Organic Spices Set", image: "https://astorapiaries.com/cdn/shop/articles/AA_How_to_tell_teh_difference_between_good_and_bad_honey_1080x.png?v=1686662686", rating: 0, price: "Coming Soon", quantities: [], category: "spices" },
+                { id: 12, name: "Organic Herbal Teas", image: "https://i.etsystatic.com/34310988/r/il/458426/4729234785/il_fullxfull.4729234785_44pp.jpg", rating: 0, price: "Coming Soon", quantities: [], category: "others" },
+                { id: 13, name: "Barnyard Millets", image: "https://images.thequint.com/thequint/2018-12/cd013a80-7cbd-418f-b2ca-ce8af7d9ea56/iStock_480451586.jpg?auto=format%2Ccompress", rating: 4, price: 320, quantities: ["200gm", "500gm", "1000gm"], category: "millets" },
+                { id: 14, name: "Organic Turmeric Powder", image: "https://static.wixstatic.com/media/e0ad65_2de83acb54cc423ca9b3216ce12b1cad~mv2.png/v1/fill/w_512,h_512,al_c,usm_0.66_1.00_0.01/e0ad65_2de83acb54cc423ca9b3216ce12b1cad~mv2.png", rating: 5, price: 199, quantities: ["200gm", "500gm"], category: "spices" },
+                { id: 15, name: "Pure Buffalo Ghee", image: "https://www.cookwithkushi.com/wp-content/uploads/2022/10/best_homemade_traditional_ghee_1.jpg", rating: 4, price: 850, quantities: ["200gm", "500gm", "1000gm"], category: "ghee" }
+            ];
+
+            const productGrid = document.getElementById('product-grid');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+
+            function renderProducts(filteredProducts) {
+                productGrid.innerHTML = ''; // Clear existing products
+                if (filteredProducts.length === 0) {
+                    productGrid.innerHTML = '<p class="text-center text-gray-600 col-span-full">No products found in this category.</p>';
+                    return;
+                }
+
+                filteredProducts.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.classList.add('product-card');
+
+                    let ratingStars = '';
+                    for (let i = 0; i < 5; i++) {
+                        if (i < product.rating) {
+                            ratingStars += '<i class="fas fa-star"></i>';
+                        } else if (i === Math.floor(product.rating) && product.rating % 1 !== 0) {
+                            ratingStars += '<i class="fas fa-star-half-alt"></i>';
+                        } else {
+                            ratingStars += '<i class="far fa-star"></i>';
+                        }
+                    }
+
+                    let quantityOptions = '';
+                    if (product.quantities.length > 0) {
+                        product.quantities.forEach(q => {
+                            quantityOptions += `<option value="${q}">${q}</option>`;
+                        });
+                    } else {
+                        quantityOptions = '<option value="">N/A</option>';
+                    }
+
+                    const buttonText = product.price === "Coming Soon" ? "Notify Me" : "Add to Cart";
+                    const buttonDisabled = product.price === "Coming Soon" ? "disabled" : "";
+
+                    productCard.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="rating">${ratingStars}</div>
+                        <h3>${product.name}</h3>
+                        <div class="price">${typeof product.price === 'number' ? 'INR ' + product.price : product.price}</div>
+                        <select class="quantity-dropdown" ${buttonDisabled}>
+                            ${quantityOptions}
+                        </select>
+                        <button class="add-to-cart" ${buttonDisabled}>${buttonText}</button>
+                    `;
+                    productGrid.appendChild(productCard);
+                });
+            }
+
+            // Filter Products
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to the clicked button
+                    button.classList.add('active');
+
+                    const category = button.dataset.category;
+                    let filteredProducts = [];
+                    if (category === 'all') {
+                        filteredProducts = products;
+                    } else {
+                        filteredProducts = products.filter(p => p.category === category);
+                    }
+                    renderProducts(filteredProducts);
+                });
+            });
+
+            // Initial render of all products
+            renderProducts(products);
+
+            // Section Animations on Scroll (for main content sections)
+            const animatedSections = document.querySelectorAll('.hidden-element');
+
+            const sectionObserverOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the section is visible
+            };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible-element');
+                        observer.unobserve(entry.target); // Animate once
+                    }
+                });
+            }, sectionObserverOptions);
+
+            animatedSections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // Footer Animation on Scroll
+            const footerColumns = document.querySelectorAll('.footer-column-animated');
+
+            const footerObserverOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the footer is visible
+            };
+
+            const footerObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, footerObserverOptions);
+
+            footerColumns.forEach(column => {
+                footerObserver.observe(column);
+            });
+
+            // Set current year for the copyright
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>

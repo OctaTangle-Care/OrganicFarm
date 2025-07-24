@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Organic Farm E-commerce</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-container {
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(44, 62, 80, 0.18);
+            max-width: 350px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .login-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #388e3c;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+        .login-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .login-form label {
+            font-size: 1rem;
+            color: #388e3c;
+            margin-bottom: 0.3rem;
+            margin-top: 1rem;
+        }
+        .login-form input {
+            padding: 0.7rem 1rem;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            transition: border 0.2s;
+        }
+        .login-form input:focus {
+            border: 1.5px solid #388e3c;
+            outline: none;
+        }
+        .login-form button {
+            margin-top: 1.2rem;
+            padding: 0.8rem;
+            background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 2px 8px rgba(67, 206, 162, 0.15);
+        }
+        .login-form button:hover {
+            background: linear-gradient(90deg, #185a9d 0%, #43cea2 100%);
+        }
+        .links {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+        .links a {
+            font-size: 0.98rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .forgot-link {
+            color: #e53935;
+            font-weight: 600;
+        }
+        .forgot-link:hover {
+            text-decoration: underline;
+            color: #b71c1c;
+        }
+        .create-link {
+            color: #388e3c;
+            font-weight: 600;
+        }
+        .create-link:hover {
+            text-decoration: underline;
+            color: #185a9d;
+        }
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 1.5rem 0.8rem;
+                max-width: 95vw;
+            }
+            .login-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-title">Organic Farm Login</div>
+        <form class="login-form" method="post">
+            {% csrf_token %}
+            
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required autocomplete="username">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required autocomplete="current-password">
+
+            <button type="submit">Login</button>
+        </form>
+        <div class="links">
+            <a href="#" class="forgot-link">Forgot password?</a>
+            <a href="/signup" class="create-link">Create new account</a>
+        </div>
+    </div>
+</body>
+</html>

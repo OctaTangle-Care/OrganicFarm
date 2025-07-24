@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Farm</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: zoomIn 3s ease-in-out forwards;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .endline {
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            animation-delay: 3s;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .loading-container {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 300px;
+            height: 10px;
+            background-color: rgb(230, 194, 194);
+            opacity: 0;
+            overflow: hidden;
+            animation: fadeIn 2s ease-in-out forwards;
+            animation-delay: 5s;
+            border-radius: 9px;
+        }
+
+        .loading-bar {
+            width: 0;
+            height: 100%;
+            border-radius: 9px;
+            background-color: #0a98f7;
+            animation: load 2s linear forwards;
+            animation-delay: 5s;
+        }
+
+        @keyframes load {
+            0% {
+                width: 0%;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+    </style>
+    <script>
+        // Redirect after the animations and loading symbol
+        function redirectToAnotherPage() {
+            setTimeout(function() {
+                window.location.href = "/index";
+                // window.location.href = "/selectuser"; // replace with the desired URL
+            }, 7000); // total time: logo + endline + loading animation
+        }
+
+        window.onload = redirectToAnotherPage;
+    </script>
+</head>
+<body>
+    <div class="logo">
+        <img src="{% static 'logos/otc2svg.svg' %}" alt="img missing.." width="200">
+    </div>
+    <div class="endline">
+        <h3>-- Organic & Natural Products! --</h3>
+    </div>
+    <div class="loading-container">
+        <div class="loading-bar"></div>
+    </div>
+</body>
+</html>

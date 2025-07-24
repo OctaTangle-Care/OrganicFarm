@@ -1,0 +1,1039 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refund Policy - Your Organic Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Chosen Palette: Minimalist & Professional (Grayscale with Organic Orange Accent) -->
+    <!-- Application Structure Plan: A single-page document with a sticky header and a non-sticky footer. The main content area is structured with a table of contents for easy navigation to concise sections covering eligibility, process, non-refundable items, exchanges, and contact. This design prioritizes clear communication and user-friendly access to refund information. -->
+    <!-- Visualization & Content Choices: The goal is to inform directly and efficiently. Information is presented in clear, concise text blocks and bullet points. Headings and subheadings organize content hierarchically. A sticky Table of Contents provides interactive navigation. No complex charts or visual elements are used, as directness and readability are paramount for a refund policy. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: white;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-weight: 600;
+            color: #1a202c;
+        }
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #f97316; /* Tailwind orange-500 */
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 2px;
+        }
+        .toc-link {
+            transition: color 0.2s ease-in-out;
+        }
+        .toc-link:hover {
+            color: #f97316; /* Tailwind orange-500 */
+        }
+
+        /* Navbar Styles (Sticky Header) */
+        .navbar {
+            background-color: #f8f8f8;
+            color: #333;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+        .navbar-logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #FFA500;
+        }
+        .navbar-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .navbar-links li {
+            margin-left: 30px;
+        }
+        .navbar-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar-links a:hover {
+            color: #FFA500;
+        }
+        .navbar-icons {
+            display: flex;
+            gap: 20px;
+        }
+        .navbar-icons a {
+            text-decoration: none;
+            color: #555;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+        .navbar-icons a:hover {
+            color: #FFA500;
+        }
+        .navbar-icons .fas {
+            margin-right: 5px;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .navbar-links, .navbar-icons {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background-color: #f8f8f8;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                padding: 15px 0;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            }
+            .navbar-links.active, .navbar-icons.active {
+                display: flex;
+            }
+            .navbar-links li, .navbar-icons a {
+                margin: 10px 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .navbar {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Main content padding to account for sticky navbar */
+        main {
+            padding-top: 80px; /* Height of navbar */
+            padding-bottom: 40px; /* Space before footer */
+        }
+
+        /* Footer Styles (Non-sticky) */
+        .footer {
+            background-color: #330033;
+            color: white;
+            padding: 3rem 1rem;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            /* Removed sticky properties: position, bottom, width, z-index */
+        }
+        .footer .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .footer .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            .footer .grid {
+                grid-template-columns: repeat(4, 1fr);
+                text-align: left;
+            }
+        }
+        .footer h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #FFA500;
+        }
+        .footer p {
+            font-size: 0.875rem;
+            color: #a0aec0;
+            line-height: 1.5;
+        }
+        .footer h5 {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        .footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .footer ul li a {
+            font-size: 0.875rem;
+            color: #a0aec0;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+        .footer ul li a:hover {
+            color: #FFA500;
+            transform: translateX(5px);
+        }
+        .footer .border-top {
+            border-top: 1px solid #4a5568;
+            padding-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        @media (min-width: 768px) {
+            .footer .border-top {
+                flex-direction: row;
+            }
+        }
+        .footer .border-top p {
+            font-size: 0.875rem;
+            color: #a0aec0;
+            margin-bottom: 1rem;
+        }
+        @media (min-width: 768px) {
+            .footer .border-top p {
+                margin-bottom: 0;
+            }
+        }
+        .footer .social-icons-wrapper {
+            display: flex;
+            gap: 1.25rem;
+        }
+        .footer .social-icons-wrapper a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .footer .social-icons-wrapper a:hover {
+            color: #FFA500;
+            transform: translateY(-3px) scale(1.1);
+        }
+        .footer .social-icons-wrapper a .fab {
+            font-size: 1.25rem;
+        }
+
+        /* Animation for sections */
+        .section-animated {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .section-animated.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Sticky Table of Contents */
+        .toc-sticky {
+            position: sticky;
+            top: 100px; /* Adjust based on navbar height + desired offset */
+            align-self: flex-start; /* Keeps it at the top of its flex container */
+            max-height: calc(100vh - 120px); /* Adjust for header/footer and margins */
+            overflow-y: auto; /* Scroll if content overflows */
+        }
+
+        /* Main content layout for Refund Policy */
+        .refund-content-wrapper {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start; /* Align items to the top */
+        }
+        @media (max-width: 1024px) { /* Adjust breakpoint as needed */
+            .refund-content-wrapper {
+                flex-direction: column;
+            }
+            .toc-sticky {
+                position: static; /* Remove sticky on smaller screens */
+                max-height: none;
+                overflow-y: visible;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navbar (Header) -->
+    <nav class="navbar">
+        <div class="navbar-logo">Your Logo</div>
+        <ul class="navbar-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+        <div class="navbar-icons">
+            <a href="#"><i class="fas fa-user-circle"></i> Profile</a>
+            <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12 max-w-6xl">
+        <h1 class="text-center mb-8 text-orange-600">Refund Policy</h1>
+        <p class="text-gray-700 text-center mb-10">
+            We want you to be completely satisfied with your organic products. This policy outlines our guidelines for refunds and returns.
+            Last Updated: <span id="last-updated-date">July 24, 2025</span>
+        </p>
+
+        <div class="refund-content-wrapper">
+            <!-- Sticky Table of Contents -->
+            <div class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md w-1/4 min-w-[200px] toc-sticky">
+                <h2 class="text-xl font-semibold mb-4 text-gray-800">Table of Contents</h2>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li><a href="#eligibility" class="toc-link">1. Eligibility for Refund</a></li>
+                    <li><a href="#return-process" class="toc-link">2. Return Process</a></li>
+                    <li><a href="#non-refundable" class="toc-link">3. Non-Refundable Items</a></li>
+                    <li><a href="#refund-timeline" class="toc-link">4. Refund Timeline</a></li>
+                    <li><a href="#exchanges" class="toc-link">5. Exchanges</a></li>
+                    <li><a href="#shipping-costs" class="toc-link">6. Shipping Costs</a></li>
+                    <li><a href="#contact-us" class="toc-link">7. Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Policy Content -->
+            <div class="w-3/4 bg-white shadow-lg rounded-lg p-8 section-animated">
+                <section id="eligibility" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 section-heading">1. Eligibility for Refund</h2>
+                    <p class="mb-4 text-gray-700">
+                        To be eligible for a refund, your item must be unused, in the same condition that you received it, and in its original packaging. It must also be returned within [e.g., 14] days of purchase. Perishable goods like fresh produce or opened honey/ghee are generally not eligible unless damaged or spoiled upon arrival.
+                    </p>
+                </section>
+
+                <section id="return-process" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 section-heading">2. Return Process</h2>
+                    <p class="mb-4 text-gray-700">
+                        To initiate a return, please contact our customer service team at [Your Email Address for Support, e.g., support@yourorganicplatform.com] with your order number and reason for return. We will provide you with instructions on how to send your item back. Please do not send your purchase back to the manufacturer.
+                    </p>
+                </section>
+
+                <section id="non-refundable" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 section-heading">3. Non-Refundable Items</h2>
+                    <p class="mb-4 text-gray-700">
+                        Certain types of goods are exempt from being returned or refunded:
+                    </p>
+                    <ul class="list-disc list-inside ml-5 mb-4 text-gray-700">
+                        <li>Gift cards</li>
+                        <li>Downloadable software products</li>
+                        <li>Some health and personal care items (if opened)</li>
+                        <li>Perishable goods (e.g., opened food items, unless defective)</li>
+                    </ul>
+                </section>
+
+                <section id="refund-timeline" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 section-heading">4. Refund Timeline</h2>
+                    <p class="mb-4 text-gray-700">
+                        Once your return is received and inspected, we will send you an email to notify you that we have received your returned item. We will also notify you of the approval or rejection of your refund. If approved, your refund will be processed, and a credit will automatically be applied to your original method of payment, within [e.g., 7-10] business days.
+                    </p>
+                </section>
+
+                <section id="exchanges" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 section-heading">5. Exchanges</h2>
+                    <p class="mb-4 text-gray-700">
+                        We only replace items if they are defective or damaged. If you need to exchange it for the same item, send us an email at [Your Email Address for Support] and we will provide further instructions.
+                    </p>
+                </section>
+
+                <section id="shipping-costs" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 section-heading">6. Shipping Costs</h2>
+                    <p class="mb-4 text-gray-700">
+                        You will be responsible for paying for your own shipping costs for returning your item. Shipping costs are non-refundable. If you receive a refund, the cost of return shipping will be deducted from your refund. For defective or damaged items, return shipping may be covered by us.
+                    </p>
+                </section>
+
+                <section id="contact-us" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 section-heading">7. Contact Us</h2>
+                    <p class="mb-4 text-gray-700">
+                        For any questions regarding our Refund Policy, please contact us at:
+                    </p>
+                    <p class="text-gray-700">
+                        Email: [Your Email Address, e.g., support@yourorganicplatform.com]<br>
+                        Phone: [Your Phone Number, e.g., +91 98765 43210]
+                    </p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="grid">
+                <div class="footer-column-animated">
+                    <h4>Brand name</h4>
+                    <p>Unleash Your Shopping. <br>Redefine Organic Products.</p>
+                </div>
+                <div class="footer-column-animated">
+                    <h5>Shop</h5>
+                    <ul>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Organic Honey</a></li>
+                        <li><a href="#">Organic Products</a></li>
+                        <li><a href="#">Others</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column-animated">
+                    <h5>About</h5>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press & Media</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column-animated">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="/c_us">Contact Us</a></li>
+                        <li><a href="/privacy_policy">Privacy Policy</a></li>
+                        <li><a href="/accessibility_statement">Accessibility Statement</a></li>
+                        <li><a href="/terms_and_conditions">Terms & Conditions</a></li>
+                        <li><a href="/shipping_policy">Shipping Policy</a></li>
+                        <li><a href="/refund_policy">Refund Policy</a></li>
+                </div>
+            </div>
+            <div class="border-top">
+                <p>&copy; <span id="current-year"></span> Brand name. All Rights Reserved. Crafted with &hearts; for the Future.</p>
+                <div class="social-icons-wrapper">
+                    <a href="https://www.instagram.com/gnanow?igsh=MTJud3hlNnQyYTV4cA==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/gnanow_?t=v0L6_qBndZkFMAhhCfqqqw&s=09" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://x.com/gnanow_?t=v0L6_qBndZkFMAhhCfqqqw&s=09" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/gnanow?igsh=MTJud3hlNnQyYTV4cA==" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navbar Mobile Toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navbarLinks = document.querySelector('.navbar-links');
+            const navbarIcons = document.querySelector('.navbar-icons');
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    navbarLinks.classList.toggle('active');
+                    navbarIcons.classList.toggle('active');
+                });
+            }
+
+            // Smooth scroll for TOC links
+            document.querySelectorAll('.toc-link').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Section Animations on Scroll
+            const animatedSections = document.querySelectorAll('.section-animated');
+            const sectionObserverOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, sectionObserverOptions);
+            animatedSections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // Footer Animation on Scroll (if you want it to animate on scroll)
+            const footerColumns = document.querySelectorAll('.footer-column-animated');
+            const footerObserverOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            const footerObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, footerObserverOptions);
+            footerColumns.forEach(column => {
+                footerObserver.observe(column);
+            });
+
+            // Set current year for the copyright
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html> {% endcomment %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions - Your Organic Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Chosen Palette: Minimalist & Professional (Grayscale with Organic Orange Accent) -->
+    <!-- Application Structure Plan: A single-page document with a sticky header and a non-sticky footer. The main content area features a table of contents for quick navigation to concise, key sections covering website usage, product terms, user responsibilities, and legal disclaimers. This structure prioritizes clarity and ease of access to essential legal information, making it simple for users to understand their agreement. -->
+    <!-- Visualization & Content Choices: The goal is to inform directly and efficiently. Information is presented in clear, concise text blocks and bullet points. Headings and subheadings organize content hierarchically. A sticky Table of Contents provides interactive navigation. No complex charts or visual elements are used, as directness and readability are paramount for legal documents. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: white;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-weight: 600;
+            color: #1a202c;
+        }
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #f97316; /* Tailwind orange-500 */
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 2px;
+        }
+        .toc-link {
+            transition: color 0.2s ease-in-out;
+        }
+        .toc-link:hover {
+            color: #f97316; /* Tailwind orange-500 */
+        }
+
+        /* Navbar Styles (Sticky Header) */
+        .navbar {
+            background-color: #f8f8f8;
+            color: #333;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+            flex-wrap: wrap; /* Allow wrapping for mobile layout */
+        }
+        .navbar-logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #FFA500;
+        }
+        .navbar-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex; /* Default on desktop */
+        }
+        .navbar-links li {
+            margin-left: 30px;
+        }
+        .navbar-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar-links a:hover {
+            color: #FFA500;
+        }
+        .navbar-icons {
+            display: flex; /* Always visible */
+            gap: 20px;
+        }
+        .navbar-icons a {
+            text-decoration: none;
+            color: #555;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+        .navbar-icons a:hover {
+            color: #FFA500;
+        }
+        .navbar-icons .fas {
+            margin-right: 5px;
+        }
+        .menu-toggle {
+            display: none; /* Hidden on desktop */
+            font-size: 1.5em;
+            cursor: pointer;
+            margin-left: 20px; /* Space between icons and toggle */
+        }
+
+        /* Responsive Navbar */
+        @media (max-width: 768px) {
+            .navbar {
+                justify-content: space-between; /* Logo left, icons/toggle right */
+                padding: 15px; /* Adjust padding for mobile */
+            }
+            .navbar-links {
+                display: none; /* Hide main links by default on smaller screens */
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background-color: #f8f8f8;
+                position: absolute; /* Position below the main navbar line */
+                top: 70px; /* Adjust based on navbar height */
+                left: 0;
+                padding: 15px 0;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            }
+            .navbar-links.active {
+                display: flex; /* Show main links when active */
+            }
+            .navbar-links li {
+                margin: 10px 0; /* Vertical spacing for mobile links */
+            }
+            .navbar-icons {
+                /* No display: none here, they remain visible */
+                order: 2; /* Position icons after logo but before toggle on mobile */
+                margin-left: auto; /* Push icons to the right */
+            }
+            .menu-toggle {
+                display: block; /* Show menu toggle on smaller screens */
+                order: 3; /* Position toggle last on mobile */
+            }
+        }
+
+        /* Main content padding to account for sticky navbar */
+        main {
+            padding-top: 80px; /* Height of navbar */
+            padding-bottom: 40px; /* Space before footer */
+        }
+
+        /* Footer Styles (Non-sticky) */
+        .footer {
+            background-color: #330033;
+            color: white;
+            padding: 3rem 1rem;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            /* Removed sticky properties: position, bottom, width, z-index */
+        }
+        .footer .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .footer .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            .footer .grid {
+                grid-template-columns: repeat(4, 1fr);
+                text-align: left;
+            }
+        }
+        .footer h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #FFA500;
+        }
+        .footer p {
+            font-size: 0.875rem;
+            color: #a0aec0;
+            line-height: 1.5;
+        }
+        .footer h5 {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        .footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .footer ul li a {
+            font-size: 0.875rem;
+            color: #a0aec0;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+        .footer ul li a:hover {
+            color: #FFA500;
+            transform: translateX(5px);
+        }
+        .footer .border-top {
+            border-top: 1px solid #4a5568;
+            padding-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        @media (min-width: 768px) {
+            .footer .border-top {
+                flex-direction: row;
+            }
+        }
+        .footer .border-top p {
+            font-size: 0.875rem;
+            color: #a0aec0;
+            margin-bottom: 1rem;
+        }
+        @media (min-width: 768px) {
+            .footer .border-top p {
+                margin-bottom: 0;
+            }
+        }
+        .footer .social-icons-wrapper {
+            display: flex;
+            gap: 1.25rem;
+        }
+        .footer .social-icons-wrapper a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .footer .social-icons-wrapper a:hover {
+            color: #FFA500;
+            transform: translateY(-3px) scale(1.1);
+        }
+        .footer .social-icons-wrapper a .fab {
+            font-size: 1.25rem;
+        }
+
+        /* Animation for sections */
+        .section-animated {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .section-animated.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Sticky Table of Contents */
+        .toc-sticky {
+            position: sticky;
+            top: 100px; /* Adjust based on navbar height + desired offset */
+            align-self: flex-start; /* Keeps it at the top of its flex container */
+            max-height: calc(100vh - 120px); /* Adjust for header/footer and margins */
+            overflow-y: auto; /* Scroll if content overflows */
+        }
+
+        /* Main content layout for Terms & Conditions */
+        .terms-content-wrapper {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start; /* Align items to the top */
+        }
+        @media (max-width: 1024px) { /* Adjust breakpoint as needed */
+            .terms-content-wrapper {
+                flex-direction: column;
+            }
+            .toc-sticky {
+                position: static; /* Remove sticky on smaller screens */
+                max-height: none;
+                overflow-y: visible;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navbar (Header) -->
+    <nav class="navbar">
+        <div class="navbar-logo">Your Logo</div>
+        <ul class="navbar-links">
+            <li><a href="/index">Home</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+        <div class="navbar-icons">
+            <a href="/unknown"><i class="fas fa-user-circle"></i> Profile</a>
+            <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12 max-w-6xl">
+        <h1 class="text-center mb-8 text-orange-600">Terms & Conditions</h1>
+        <p class="text-gray-700 text-center mb-10">
+            Welcome to Your Organic Platform. By accessing or using our website, you agree to comply with and be bound by these Terms and Conditions.
+            Last Updated: <span id="last-updated-date">July 24, 2025</span>
+        </p>
+
+        <div class="terms-content-wrapper">
+            <!-- Sticky Table of Contents -->
+            <div class="mb-10 p-6 bg-gray-50 rounded-lg shadow-md w-1/4 min-w-[200px] toc-sticky">
+                <h2 class="text-xl font-semibold mb-4 text-gray-800">Table of Contents</h2>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li><a href="#introduction" class="toc-link">1. Introduction</a></li>
+                    <li><a href="#use-of-site" class="toc-link">2. Use of the Site</a></li>
+                    <li><a href="#products-pricing" class="toc-link">3. Products & Pricing</a></li>
+                    <li><a href="#user-accounts" class="toc-link">4. User Accounts</a></li>
+                    <li><a href="#intellectual-property" class="toc-link">5. Intellectual Property</a></li>
+                    <li><a href="#disclaimers" class="toc-link">6. Disclaimers</a></li>
+                    <li><a href="#governing-law" class="toc-link">7. Governing Law</a></li>
+                    <li><a href="#changes-to-terms" class="toc-link">8. Changes to Terms</a></li>
+                    <li><a href="#contact-us" class="toc-link">9. Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Policy Content -->
+            <div class="w-3/4 bg-white shadow-lg rounded-lg p-8 section-animated">
+                <section id="introduction" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 section-heading">1. Introduction</h2>
+                    <p class="mb-4 text-gray-700">
+                        These Terms and Conditions ("Terms") govern your access to and use of Your Organic Platform website ([Your Website URL, e.g., yourorganicplatform.com]) and its services. By accessing or using the Site, you agree to be bound by these Terms. If you do not agree, you may not use the Site.
+                    </p>
+                </section>
+
+                <section id="use-of-site" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 section-heading">2. Use of the Site</h2>
+                    <p class="mb-4 text-gray-700">
+                        You agree to use the Site only for lawful purposes and in a way that does not infringe the rights of, restrict, or inhibit anyone else's use and enjoyment of the Site. Prohibited behavior includes harassing or causing distress or inconvenience to any other user, transmitting obscene or offensive content, or disrupting the normal flow of dialogue within the Site.
+                    </p>
+                </section>
+
+                <section id="products-pricing" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 section-heading">3. Products & Pricing</h2>
+                    <p class="mb-4 text-gray-700">
+                        All products listed on the Site are subject to availability. We reserve the right to limit the quantity of products we supply. Product descriptions and pricing are subject to change without notice. While we strive for accuracy, errors may occur. In such cases, we reserve the right to refuse or cancel orders.
+                    </p>
+                </section>
+
+                <section id="user-accounts" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 section-heading">4. User Accounts</h2>
+                    <p class="mb-4 text-gray-700">
+                        If you create an account on our Site, you are responsible for maintaining the confidentiality of your account and password and for restricting access to your computer. You agree to accept responsibility for all activities that occur under your account or password. We reserve the right to refuse service, terminate accounts, remove or edit content, or cancel orders in our sole discretion.
+                    </p>
+                </section>
+
+                <section id="intellectual-property" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 section-heading">5. Intellectual Property</h2>
+                    <p class="mb-4 text-gray-700">
+                        All content on this Site, including text, graphics, logos, images, and software, is the property of Your Organic Platform or its content suppliers and protected by intellectual property laws. You may not reproduce, duplicate, copy, sell, resell, or exploit any portion of the Site without express written permission from us.
+                    </p>
+                </section>
+
+                <section id="disclaimers" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 section-heading">6. Disclaimers</h2>
+                    <p class="mb-4 text-gray-700">
+                        The Site and its content are provided on an "as is" basis without any warranties, express or implied. We do not guarantee that the Site will be uninterrupted or error-free. Your use of the Site is at your sole risk.
+                    </p>
+                </section>
+
+                <section id="governing-law" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 section-heading">7. Governing Law</h2>
+                    <p class="mb-4 text-gray-700">
+                        These Terms shall be governed by and construed in accordance with the laws of [Your Country/State, e.g., India], without regard to its conflict of law provisions.
+                    </p>
+                </section>
+
+                <section id="changes-to-terms" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 section-heading">8. Changes to Terms</h2>
+                    <p class="mb-4 text-gray-700">
+                        We reserve the right to update, change, or replace any part of these Terms by posting updates and changes to our website. It is your responsibility to check our website periodically for changes. Your continued use of or access to our website following the posting of any changes constitutes acceptance of those changes.
+                    </p>
+                </section>
+
+                <section id="contact-us" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4 section-heading">9. Contact Us</h2>
+                    <p class="mb-4 text-gray-700">
+                        For any questions regarding these Terms, please contact us at:
+                    </p>
+                    <p class="text-gray-700">
+                        Email: [Your Email Address, e.g., support@yourorganicplatform.com]<br>
+                        Address: [Your Company Name], [Your Company Address, e.g., 123 Organic Lane, Green City, India]
+                    </p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="grid">
+                <div class="footer-column-animated">
+                    <h4>Brand name</h4>
+                    <p>Unleash Your Shopping. <br>Redefine Organic Products.</p>
+                </div>
+                <div class="footer-column-animated">
+                    <h5>Shop</h5>
+                    <ul>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Organic Honey</a></li>
+                        <li><a href="#">Organic Products</a></li>
+                        <li><a href="#">Others</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column-animated">
+                    <h5>About</h5>
+                    <ul>
+                        <li><a href="/aboutus">Our Story</a></li>
+                        <li><a href="/unknown">Careers</a></li>
+                        <li><a href="/unknown">Press & Media</a></li>
+                        <li><a href="/unknown">Sustainability</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column-animated">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="/contactus">Contact Us</a></li>
+                        <li><a href="/privacy_policy">Privacy Policy</a></li>
+                        <li><a href="/accessibility_statement">Accessibility statement</a></li>
+                        <li><a href="/terms_and_conditions">Terms & Conditions</a></li>
+                        <li><a href="/shipping_policy">Shipping Policy</a></li>
+                        <li><a href="/refund_policy">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top">
+                <p>&copy; <span id="current-year"></span> Brand name. All Rights Reserved. Crafted with &hearts; for the Future.</p>
+                <div class="social-icons-wrapper">
+                    <a href="https://www.instagram.com/gnanow?igsh=MTJud3hlNnQyYTV4cA==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/gnanow_?t=v0L6_qBndZkFMAhhCfqqqw&s=09" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://x.com/gnanow_?t=v0L6_qBndZkFMAhhCfqqqw&s=09" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/gnanow?igsh=MTJud3hlNnQyYTV4cA==" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navbar Mobile Toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navbarLinks = document.querySelector('.navbar-links');
+            // Removed navbarIcons from here as it's no longer toggled by JS
+            // const navbarIcons = document.querySelector('.navbar-icons'); // This line is intentionally commented out/removed
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    navbarLinks.classList.toggle('active');
+                    // Removed this line: navbarIcons.classList.toggle('active');
+                });
+            }
+
+            // Smooth scroll for TOC links
+            document.querySelectorAll('.toc-link').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Section Animations on Scroll
+            const animatedSections = document.querySelectorAll('.section-animated');
+            const sectionObserverOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, sectionObserverOptions);
+            animatedSections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // Footer Animation on Scroll (if you want it to animate on scroll)
+            const footerColumns = document.querySelectorAll('.footer-column-animated');
+            const footerObserverOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            const footerObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, footerObserverOptions);
+            footerColumns.forEach(column => {
+                footerObserver.observe(column);
+            });
+
+            // Set current year for the copyright
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
